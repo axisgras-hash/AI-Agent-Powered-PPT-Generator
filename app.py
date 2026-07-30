@@ -28,7 +28,7 @@ ALL_API = [GOOGLE_KEY,  GROQ_KEY,  TAVILY_KEY]
 if not all(ALL_API):
   st.sidebar.error("PASS API-KEYS")
 
-elif any(ALL_API):
+elif all(ALL_API):
   st.sidebar.info("MUST PASS ALL API KEYS")
 
 else:
@@ -109,7 +109,7 @@ def prompt_generator(model, query):
   return final_prompt
 
 
-if all(ALL_API) and User_query:
+if all(ALL_API) and sser_query:
 
   agent = create_agent(
       model = model,
