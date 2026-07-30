@@ -129,10 +129,10 @@ if all(ALL_API) and user_query:
     st.header("GENERATE IMAGE GIVE PROMPT")
     if st.button("Click to generate: ", key="generate_img_button"):
       with st.spinner("Running Agent.."):
-        data = generate_image(user_query)
+        data = f"https://image.pollinations.ai/{user_query}"
         st.image(data)
-        st.image("Image.jpeg")
-        st.rerun() 
+        # st.image("Image.jpeg")
+        # st.rerun() 
   
   with tab2:
     st.header("CHECK LATEST NEWS")
