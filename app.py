@@ -108,57 +108,60 @@ def prompt_generator(model, query):
     f.write(final_prompt)
   return final_prompt
 
-agent = create_agent(
-    model = model,
-    tools = [search_latest_info,
-             generate_image]
-)
-# =============DISPLAY AGENT==========
-st.sidebar.image(agent)
 
-# ==============WITH TABS=============
-with tab1:
-  st.header("GENERATE IMAGE GIVE PROMPT")
-  if st.button("Click to generate: "):
-    with st.spinner("Running Agent.."):
-      data = generate_image(user_query)
-      st.image(data)
-      st.image("Image.jpeg")
+if all(ALL_API) and User_query:
 
-with tab2:
-  st.header("CHECK LATEST NEWS")
-  if st.button("Fetch news: "):
-    with st.spinner("Running Agent.."):
-      
-      prompt = """Give latest news India or world news related
-      to tech, business, jobs, or user requested Output
-      In Proper HTML News Templates""" + user_query
-      
-      response = agent.invoke({'messages':[{'role':"user",
-                                      "content":prompt}]})
-      code = response['messages'][-1].content[-1]['text']
-
-      st.html(code, width="stretch", 
-              unsafe_allow_javascript=True)
-
-with tab3:
-  st.header("Create PPT")
-  if st.button("Click to generate: "):
-    with st.spinner("Running Agent.."):
-      final_prompt = prompt_generator(model,user_query)
-
-      response = agent.invoke({'messages':[{'role':"user",
-                                      "content":final_prompt}]})
-
-      code = response['messages'][-1].content[-1]['text']
-      st.html(code, width="stretch", 
-              unsafe_allow_javascript=True)
-      st.download_button(label = "DOWNLOAD PPT",
-                        data = code,
-                        file_name = 'ppt.html',
-                        mime = 'text/html')
-      
-      st.success("PPT Downloaded Successfully!!")
+  agent = create_agent(
+      model = model,
+      tools = [search_latest_info,
+               generate_image]
+  )
+  # =============DISPLAY AGENT==========
+  st.sidebar.image(agent)
+  
+  # ==============WITH TABS=============
+  with tab1:
+    st.header("GENERATE IMAGE GIVE PROMPT")
+    if st.button("Click to generate: "):
+      with st.spinner("Running Agent.."):
+        data = generate_image(user_query)
+        st.image(data)
+        st.image("Image.jpeg")
+  
+  with tab2:
+    st.header("CHECK LATEST NEWS")
+    if st.button("Fetch news: "):
+      with st.spinner("Running Agent.."):
+        
+        prompt = """Give latest news India or world news related
+        to tech, business, jobs, or user requested Output
+        In Proper HTML News Templates""" + user_query
+        
+        response = agent.invoke({'messages':[{'role':"user",
+                                        "content":prompt}]})
+        code = response['messages'][-1].content[-1]['text']
+  
+        st.html(code, width="stretch", 
+                unsafe_allow_javascript=True)
+  
+  with tab3:
+    st.header("Create PPT")
+    if st.button("Click to generate: "):
+      with st.spinner("Running Agent.."):
+        final_prompt = prompt_generator(model,user_query)
+  
+        response = agent.invoke({'messages':[{'role':"user",
+                                        "content":final_prompt}]})
+  
+        code = response['messages'][-1].content[-1]['text']
+        st.html(code, width="stretch", 
+                unsafe_allow_javascript=True)
+        st.download_button(label = "DOWNLOAD PPT",
+                          data = code,
+                          file_name = 'ppt.html',
+                          mime = 'text/html')
+        
+        st.success("PPT Downloaded Successfully!!")
 
   
   
