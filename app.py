@@ -28,16 +28,19 @@ ALL_API = [GOOGLE_KEY,  GROQ_KEY,  TAVILY_KEY]
 if not all(ALL_API):
   st.sidebar.error("PASS API-KEYS")
 
-elif all(ALL_API):
+elif any(ALL_API):
   st.sidebar.info("MUST PASS ALL API KEYS")
-
-else:
-  st.sidebar.success("API KEYS LOADED SUCCESSFULLY")
-  # Step 1: Model Call
+  
+elif all(ALL_API):
+    # Step 1: Model Call
   model = ChatGoogleGenerativeAI(
       model = "gemini-3.5-flash-lite",
       google_api_key = GOOGLE_API_KEY
       )
+  st.sidebar.success("API KEYS LOADED SUCCESSFULLY")
+else:
+  st.info("LOADED")
+
   
 #============FORNTEND==============
 st.title("AI-Agent-Powered PPT Generator")
@@ -109,7 +112,7 @@ def prompt_generator(model, query):
   return final_prompt
 
 
-if all(ALL_API) and sser_query:
+if all(ALL_API) and user_query:
 
   agent = create_agent(
       model = model,
