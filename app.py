@@ -130,8 +130,8 @@ if all(ALL_API) and user_query:
     if st.button("Click to generate: ", key="generate_img_button"):
       with st.spinner("Running Agent.."):
         data = generate_image(user_query)
-        st.image(data)
-        # st.image("Image.jpeg")
+        # st.image(data)
+        st.image("Image.jpeg")
   
   with tab2:
     st.header("CHECK LATEST NEWS")
