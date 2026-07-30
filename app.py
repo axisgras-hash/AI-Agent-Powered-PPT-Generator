@@ -127,15 +127,15 @@ if all(ALL_API) and user_query:
   # ==============WITH TABS=============
   with tab1:
     st.header("GENERATE IMAGE GIVE PROMPT")
-    if st.button("Click to generate: "):
+    if st.button("Click to generate: ", key="generate_img_button"):
       with st.spinner("Running Agent.."):
         data = generate_image(user_query)
         st.image(data)
-        st.image("Image.jpeg")
+        # st.image("Image.jpeg")
   
   with tab2:
     st.header("CHECK LATEST NEWS")
-    if st.button("Fetch news: "):
+    if st.button("Fetch news: ", key="news_button"):
       with st.spinner("Running Agent.."):
         
         prompt = """Give latest news India or world news related
@@ -151,7 +151,7 @@ if all(ALL_API) and user_query:
   
   with tab3:
     st.header("Create PPT")
-    if st.button("Click to generate: "):
+    if st.button("Click to generate: ", key="generate_ppt_button"):
       with st.spinner("Running Agent.."):
         final_prompt = prompt_generator(model,user_query)
   
