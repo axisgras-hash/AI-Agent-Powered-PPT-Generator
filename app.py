@@ -170,7 +170,7 @@ if all(ALL_API) and user_query:
                           mime = 'text/html')
         
         st.success("PPT Downloaded Successfully!!")
-        st.rerun() 
+        
 
   
   
