@@ -122,7 +122,7 @@ if all(ALL_API) and user_query:
                generate_image]
   )
   # =============DISPLAY AGENT==========
-  st.sidebar.image(agent)
+  # st.sidebar.image(agent)
   
   # ==============WITH TABS=============
   with tab1:
