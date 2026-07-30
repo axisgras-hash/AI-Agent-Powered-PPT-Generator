@@ -150,7 +150,7 @@ if all(ALL_API) and user_query:
   
         st.html(code, width="stretch", 
                 unsafe_allow_javascript=True)
-        st.rerun() 
+        
   
   with tab3:
     st.header("Create PPT")
