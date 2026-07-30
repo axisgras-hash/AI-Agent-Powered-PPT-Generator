@@ -132,6 +132,7 @@ if all(ALL_API) and user_query:
         data = generate_image(user_query)
         st.image(data)
         st.image("Image.jpeg")
+        st.rerun() 
   
   with tab2:
     st.header("CHECK LATEST NEWS")
@@ -148,6 +149,7 @@ if all(ALL_API) and user_query:
   
         st.html(code, width="stretch", 
                 unsafe_allow_javascript=True)
+        st.rerun() 
   
   with tab3:
     st.header("Create PPT")
@@ -167,6 +169,7 @@ if all(ALL_API) and user_query:
                           mime = 'text/html')
         
         st.success("PPT Downloaded Successfully!!")
+        st.rerun() 
 
   
   
