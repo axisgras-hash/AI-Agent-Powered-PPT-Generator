@@ -164,12 +164,13 @@ if all(ALL_API) and user_query:
         code = response['messages'][-1].content[-1]['text']
         st.html(code, width="stretch", 
                 unsafe_allow_javascript=True)
-        st.download_button(label = "DOWNLOAD PPT",
+        
+        if st.download_button(label = "DOWNLOAD PPT",
                           data = code,
                           file_name = 'ppt.html',
-                          mime = 'text/html')
+                          mime = 'text/html'):
         
-        st.success("PPT Downloaded Successfully!!")
+          st.success("PPT Downloaded Successfully!!")
         
 
   
